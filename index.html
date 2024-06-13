@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primera Pre Entrega Java Script </title>
+    <title>Cotizador de Seguros</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
-<!--Buscamos que el cliente pueda cotizar un seguro y si es cliente con poliza activa pueda recurrir  a su informacion bajo el sistema Soy Cliente con sus datos ya registrados-->
 <body>
-    <h1>Formulario de Inicio de Sesion Soy Cliente y Cotizador con su respectivo formulario  </h1>
-    <P>Candela Magali Alfaro Fontana </P>
-    <script src="Js/Index.js"></script>
+    <div class="container">
+        <h1>Cotizador de Seguros</h1>
+        <form>
+            <div class="form-group">
+                <label for="tipo-riesgo">Tipo de Riesgo:</label>
+                <select id="tipo-riesgo"></select>
+            </div>
+            <div class="form-group">
+                <label for="zona-riesgo">Zona de Riesgo:</label>
+                <select id="zona-riesgo"></select>
+            </div>
+            <div class="form-group">
+                <label for="antiguedad">Antigüedad:</label>
+                <input type="number" id="antiguedad" min="0" max="100">
+            </div>
+            <div class="form-group">
+                <label for="cobertura">Cobertura:</label>
+                <select id="cobertura"></select>
+            </div>
+            <div class="form-group">
+                <label for="suma-asegurada">Suma Asegurada:</label>
+                <input type="number" id="suma-asegurada" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="medio-pago">Medio de Pago:</label>
+                <input type="text" id="medio-pago">
+            </div>
+            <button type="button" id="cotizar-btn">Cotizar</button>
+        </form>
+    </div>
+    <script src="./Js/Index.js"></script>
 </body>
 </html>
