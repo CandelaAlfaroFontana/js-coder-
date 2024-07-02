@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Arrays que contienen las opciones para los elementos select
+
     const tiposRiesgo = ['vehiculo', 'motovehiculo', 'camion', 'flota-vehiculos', 'flota-motos', 'flota-camiones'];
     const zonasRiesgo = [
         'buenos-aires', 'catamarca', 'chaco', 'chubut', 'cordoba', 'corrientes', 'entre-rios', 'formosa',
@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     const coberturas = ['todo-riesgo', 'terceros-completos', 'responsabilidad-civil'];
 
-    // Función para generar opciones para un elemento select a partir de un array
+
     function generateOptions(arr) {
         return arr.map(item => `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1).replace(/-/g, ' ')}</option>`).join('');
     }
 
-    // Llenar los elementos select con opciones generadas a partir de arrays
+
     document.getElementById('tipo-riesgo').innerHTML = generateOptions(tiposRiesgo);
     document.getElementById('zona-riesgo').innerHTML = generateOptions(zonasRiesgo);
     document.getElementById('cobertura').innerHTML = generateOptions(coberturas);
@@ -26,16 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const sumaAsegurada = parseFloat(document.getElementById('suma-asegurada').value);
         const medioPago = document.getElementById('medio-pago').value;
 
-        // Validación básica de los datos ingresados
+
         if (isNaN(sumaAsegurada) || sumaAsegurada < 3000000 || sumaAsegurada > 45000000) {
             alert('Por favor, ingrese una suma asegurada válida entre 3,000,000 y 45,000,000.');
             return;
         }
 
-        // Costo base para el cálculo del seguro
         const baseCost = 25000;
 
-        // Valores de multiplicadores almacenados en objetos para fácil búsqueda
         const tipoRiesgoMultipliers = {
             'vehiculo': 1.2,
             'motovehiculo': 1.1,
@@ -77,12 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
             'tucuman': 1.1
         };
 
-        // Búsqueda de multiplicadores según los valores seleccionados
+
         const costMultiplier = tipoRiesgoMultipliers[tipoRiesgo] || 1;
         const coberturaMultiplier = coberturaMultipliers[cobertura] || 1;
         const zonaMultiplier = zonaMultipliers[zonaRiesgo] || 1;
 
-        // Calcular el costo del seguro
+
         const cotizacion = baseCost * costMultiplier * zonaMultiplier * coberturaMultiplier * (sumaAsegurada / 10000000);
 
         alert(`El costo estimado del seguro es: $${cotizacion.toFixed(2)}`);
