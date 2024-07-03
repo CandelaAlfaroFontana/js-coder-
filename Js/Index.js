@@ -1,40 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    const tiposRiesgo = ['vehiculo', 'motovehiculo', 'camion', 'flota-vehiculos', 'flota-motos', 'flota-camiones'];
-    const zonasRiesgo = [
+    const tiposSeguro = ['vehiculo', 'motovehiculo', 'camion', 'flota-vehiculos', 'flota-motos', 'flota-camiones'];
+    const zonasSeguro = [
         'buenos-aires', 'catamarca', 'chaco', 'chubut', 'cordoba', 'corrientes', 'entre-rios', 'formosa',
         'jujuy', 'la-pampa', 'la-rioja', 'mendoza', 'misiones', 'neuquen', 'rio-negro', 'salta',
         'san-juan', 'san-luis', 'santa-cruz', 'santa-fe', 'santiago-del-estero', 'tierra-del-fuego', 'tucuman'
     ];
-    const coberturas = ['todo-riesgo', 'terceros-completos', 'responsabilidad-civil'];
+    const tiposCobertura = ['todo-riesgo', 'terceros-completos', 'responsabilidad-civil'];
 
-
-    function generateOptions(arr) {
-        return arr.map(item => `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1).replace(/-/g, ' ')}</option>`).join('');
+    function generarOpciones(array) {
+        return array.map(item => `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1).replace(/-/g, ' ')}</option>`).join('');
     }
 
+    document.getElementById('tipo-seguro').innerHTML = generarOpciones(tiposSeguro);
+    document.getElementById('zona-seguro').innerHTML = generarOpciones(zonasSeguro);
+    document.getElementById('tipo-cobertura').innerHTML = generarOpciones(tiposCobertura);
 
-    document.getElementById('tipo-riesgo').innerHTML = generateOptions(tiposRiesgo);
-    document.getElementById('zona-riesgo').innerHTML = generateOptions(zonasRiesgo);
-    document.getElementById('cobertura').innerHTML = generateOptions(coberturas);
-
-    document.getElementById('cotizar-btn').addEventListener('click', function() {
-        const tipoRiesgo = document.getElementById('tipo-riesgo').value;
-        const zonaRiesgo = document.getElementById('zona-riesgo').value;
-        const antiguedad = document.getElementById('antiguedad').value;
-        const cobertura = document.getElementById('cobertura').value;
-        const sumaAsegurada = parseFloat(document.getElementById('suma-asegurada').value);
-        const medioPago = document.getElementById('medio-pago').value;
-
+    document.getElementById('boton-cotizar').addEventListener('click', function() {
+        const tipoSeguro = document.getElementById('tipo-seguro').value;
+        const zonaSeguro = document.getElementById('zona-seguro').value;
+        const antiguedad = document.getElementById('edad-seguro').value;
+        const tipoCobertura = document.getElementById('tipo-cobertura').value;
+        const sumaAsegurada = parseFloat(document.getElementById('monto-asegurado').value);
+        const medioPago = document.getElementById('forma-pago').value;
 
         if (isNaN(sumaAsegurada) || sumaAsegurada < 3000000 || sumaAsegurada > 45000000) {
             alert('Por favor, ingrese una suma asegurada válida entre 3,000,000 y 45,000,000.');
             return;
         }
 
-        const baseCost = 25000;
+        const costoBase = 25000;
 
-        const tipoRiesgoMultipliers = {
+        const multiplicadoresTipoSeguro = {
             'vehiculo': 1.2,
             'motovehiculo': 1.1,
             'camion': 1.5,
@@ -43,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
             'flota-camiones': 2.5
         };
 
-        const coberturaMultipliers = {
+        const multiplicadoresCobertura = {
             'todo-riesgo': 1.5,
             'terceros-completos': 1.2,
             'responsabilidad-civil': 1.0
         };
 
-        const zonaMultipliers = {
+        const multiplicadoresZona = {
             'buenos-aires': 1.2,
             'catamarca': 1.0,
             'chaco': 1.0,
@@ -75,14 +71,55 @@ document.addEventListener('DOMContentLoaded', function() {
             'tucuman': 1.1
         };
 
+        const multiplicadorTipoSeguro = multiplicadoresTipoSeguro[tipoSeguro] || 1;
+        const multiplicadorCobertura = multiplicadoresCobertura[tipoCobertura] || 1;
+        const multiplicadorZona = multiplicadoresZona[zonaSeguro] || 1;
 
-        const costMultiplier = tipoRiesgoMultipliers[tipoRiesgo] || 1;
-        const coberturaMultiplier = coberturaMultipliers[cobertura] || 1;
-        const zonaMultiplier = zonaMultipliers[zonaRiesgo] || 1;
+        const cotizacion = costoBase * multiplicadorTipoSeguro * multiplicadorZona * multiplicadorCobertura * (sumaAsegurada / 10000000);
 
+        const datosCotizacion = {
+            tipoSeguro,
+            zonaSeguro,
+            antiguedad,
+            tipoCobertura,
+            sumaAsegurada,
+            medioPago,
+            cotizacion: cotizacion.toFixed(2)
+        };
 
-        const cotizacion = baseCost * costMultiplier * zonaMultiplier * coberturaMultiplier * (sumaAsegurada / 10000000);
-
-        alert(`El costo estimado del seguro es: $${cotizacion.toFixed(2)}`);
+        guardarCotizacion(datosCotizacion);
+        mostrarCotizaciones();
     });
+
+    function guardarCotizacion(datos) {
+        let cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || [];
+        cotizaciones.push(datos);
+        localStorage.setItem('cotizaciones', JSON.stringify(cotizaciones));
+    }
+
+    function mostrarCotizaciones() {
+        let cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || [];
+        let contenedorHistorial = document.getElementById('historial-cotizaciones');
+        contenedorHistorial.innerHTML = '';
+
+        cotizaciones.forEach(cotizacion => {
+            let elementoCotizacion = document.createElement('div');
+            elementoCotizacion.classList.add('cotizacion');
+
+            let detalleCotizacion = `
+                <p><strong>Tipo de Seguro:</strong> ${cotizacion.tipoSeguro}</p>
+                <p><strong>Zona del Seguro:</strong> ${cotizacion.zonaSeguro}</p>
+                <p><strong>Antigüedad:</strong> ${cotizacion.antiguedad} años</p>
+                <p><strong>Cobertura:</strong> ${cotizacion.tipoCobertura}</p>
+                <p><strong>Suma Asegurada:</strong> $${cotizacion.sumaAsegurada.toLocaleString('es-AR')}</p>
+                <p><strong>Medio de Pago:</strong> ${cotizacion.medioPago}</p>
+                <p><strong>Cotización:</strong> $${cotizacion.cotizacion}</p>
+            `;
+
+            elementoCotizacion.innerHTML = detalleCotizacion;
+            contenedorHistorial.appendChild(elementoCotizacion);
+        });
+    }
+
+    mostrarCotizaciones();
 });

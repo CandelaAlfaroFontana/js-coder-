@@ -7,35 +7,37 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="contenedor">
         <h1>Cotizador de Seguros</h1>
-        <form>
-            <div class="form-group">
-                <label for="tipo-riesgo">Tipo de Riesgo:</label>
-                <select id="tipo-riesgo"></select>
+        <form id="formulario-cotizador">
+            <div class="grupo-formulario">
+                <label for="tipo-seguro">Tipo de Seguro:</label>
+                <select id="tipo-seguro"></select>
             </div>
-            <div class="form-group">
-                <label for="zona-riesgo">Zona de Riesgo:</label>
-                <select id="zona-riesgo"></select>
+            <div class="grupo-formulario">
+                <label for="zona-seguro">Zona del Seguro:</label>
+                <select id="zona-seguro"></select>
             </div>
-            <div class="form-group">
-                <label for="antiguedad">Antigüedad:</label>
-                <input type="number" id="antiguedad" min="0" max="100">
+            <div class="grupo-formulario">
+                <label for="edad-seguro">Antigüedad:</label>
+                <input type="number" id="edad-seguro" min="0" max="100">
             </div>
-            <div class="form-group">
-                <label for="cobertura">Cobertura:</label>
-                <select id="cobertura"></select>
+            <div class="grupo-formulario">
+                <label for="tipo-cobertura">Cobertura:</label>
+                <select id="tipo-cobertura"></select>
             </div>
-            <div class="form-group">
-                <label for="suma-asegurada">Suma Asegurada:</label>
-                <input type="number" id="suma-asegurada" step="0.01">
+            <div class="grupo-formulario">
+                <label for="monto-asegurado">Suma Asegurada:</label>
+                <input type="number" id="monto-asegurado" step="0.01">
             </div>
-            <div class="form-group">
-                <label for="medio-pago">Medio de Pago:</label>
-                <input type="text" id="medio-pago">
+            <div class="grupo-formulario">
+                <label for="forma-pago">Medio de Pago:</label>
+                <input type="text" id="forma-pago">
             </div>
-            <button type="button" id="cotizar-btn">Cotizar</button>
+            <button type="button" id="boton-cotizar">Cotizar</button>
         </form>
+        <h2>Historial de Cotizaciones</h2>
+        <div id="historial-cotizaciones"></div>
     </div>
     <script src="./Js/Index.js"></script>
 </body>
