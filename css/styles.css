@@ -1,72 +1,69 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: rgb(116, 188, 236);
-    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 .contenedor {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
     padding: 20px;
-    background-color: #fff;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
     text-align: center;
-    color: #007BFF;
+    color: #333;
+}
+
+form {
+    display: grid;
+    gap: 10px;
 }
 
 .grupo-formulario {
-    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-    display: block;
+.grupo-formulario label {
     margin-bottom: 5px;
-    color: #007BFF;
+    color: #555;
 }
 
-input[type="number"],
-input[type="text"],
-select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
+.grupo-formulario input, .grupo-formulario select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
     border-radius: 4px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
     border: none;
+    background: #28a745;
+    color: #fff;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #218838;
 }
 
-#historial-cotizaciones {
-    margin-top: 20px;
-}
-
-.tabla {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabla th, .tabla td {
-    border: 1px solid #ccc;
+.cotizacion {
+    background: #f9f9f9;
     padding: 10px;
-    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
-.tabla th {
-    background-color: #f5f5f5;
+.cotizacion p {
+    margin: 5px 0;
+    color: #555;
 }
