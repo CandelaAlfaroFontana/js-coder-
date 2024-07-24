@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"content= "Somos un broker de seguros comprometido con brindarte la mejor protección para tus necesidades y las de tus seres queridos o tu empresa">
+    <meta name="keyword" content="cotizar, seguros, plataforma de cotizacion, broker">
+    <!-- BS 5.3 INICIA -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./CSS/estilos.css">
+    <title>INICIO-Alfaro Seguros PAS</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ALFARO SEGUROS PAS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ALFARO SEGUROS</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./index.html">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./pages/QuienesSomos.html">QUIENES SOMOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./pages/seguros.html">SEGUROS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./pages/cotizar.html">COTIZAR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./pages/soycliente.html">SOY CLIENTE</a>
+                </li>
+            </ul>
+        </div>
+        <div class="offcanvas-body">
+            <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="BUSCAR" aria-label="Search">
+                <button class="btn btn-success" type="submit">BUSCAR</button>
+            </form>
+        </div>
+    </div>
+    <!-- INICIO DE CARRUSEL -->
+
+    <div id="carouselE" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- botones para cambiar de imágenes -->
+
+        <div class="carousel-indicators">
+
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="1" aria-label="Slide 2"></button>
+
+            <button type="button" data-bs-target="#carouselE" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+        </div>
+
+        <!-- imágenes y descripciones para el carrusel -->
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+
+                <img src="./IMAGENES/auto portada.jpg" class="d-block w-100" alt="">
+
+                <div class="carousel-caption">
+
+                    <h5>Seguros Alfaro </h5>
+
+                    <p>Garantiza tu tranquilidad en todo momento: Asegura con Todo Riesgo, ¡nuestro compromiso es tu
+                        protección total!</p>
+
+                    <a href="../index.html" class="btn btn-primary mt-3">Cotizar</a>
+
+                </div>
+
+            </div>
+
+            <div class="carousel-item">
+
+                <img src="./IMAGENES/ART SEGUROS.jpg" class="d-block w-100" alt="">
+
+                <div class="carousel-caption">
+
+                    <h5>Seguros Empresariales</h5>
+
+                    <p>Protege tu negocio y a tus empleados con confianza: Asegura con ART y Responsabilidad Civil, ¡tu
+                        seguridad es nuestra prioridad empresarial!</p>
+
+                    <a href="./cotizar.html" class="btn btn-primary mt-3">Cotizar</a>
+
+                </div>
+
+            </div>
+
+            <div class="carousel-item">
+
+                <img src="./IMAGENES/MOTO SEGUROS.jpg" class="d-block w-100" alt="">
+
+                <div class="carousel-caption">
+
+                    <h5>ALFARO SEGUROS PAS</h5>
+
+                    <p>Protege tu pasión sobre dos ruedas con confianza: ¡Asegura tu moto con nosotros!</p>
+
+                    <a href="./cotizar.html" class="btn btn-primary">Cotizar</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- botones para retroceder o avanzar de imágenes con los iconos <> -->
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselE" data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+            <span class="visually-hidden">Previous</span>
+
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselE" data-bs-slide="next">
+
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+            <span class="visually-hidden">Next</span>
+
+        </button>
+
+    </div>
+
+    <!-- FINAL DEL CARRUSEL -->
+
+    <!-- Mensaje de bienvenida Inicio -->
+    <div class="Mensaje de Bienvenida">
+        <h2>¡Bienvenido a nuestra plataforma de cotización de seguros!</h2>
+        <p>En nombre de todo nuestro equipo, es un placer darte la bienvenida a este espacio diseñado para facilitar y
+            agilizar el proceso de aseguramiento. Somos un broker de seguros comprometido con brindarte la mejor
+            protección para tus necesidades y las de tus seres queridos o tu empresa.
+
+            Aquí, encontrarás una amplia gama de opciones de seguros adaptadas a tus requerimientos individuales o
+            empresariales. Nuestro objetivo es proporcionarte tranquilidad y seguridad en cada paso del camino.
+
+            Navega por nuestra plataforma con confianza y descubre cómo podemos ayudarte a proteger lo que más valoras.
+            Estamos aquí para asesorarte y ofrecerte soluciones a medida que se ajusten a tu presupuesto y estilo de
+            vida.
+
+            Gracias por confiar en nosotros para proteger lo que realmente importa. ¡Comencemos juntos este viaje hacia
+            una mayor tranquilidad y protección!</p>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="tarjetas">
+        <div class="col">
+            <div class="card h-100 cultivos">
+                <img src="./IMAGENES/cultivos card.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Agro Seguros</h5>
+                    <p class="card-text">Protege tus cosechas, protege tu futuro. Con nuestros agroseguros, cultiva
+                        tranquilidad ante cualquier adversidad.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 viajes">
+                <img src="./IMAGENES/phi-phi-island-tour-1497790_1280.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Seguro de Cobertura Médica Internacional</h5>
+                    <p class="card-text">Viaja con tranquilidad, cuidamos de ti en cualquier parte del mundo. Tu salud,
+                        nuestro compromiso. ¡Asegura tu bienestar global con nosotros!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 malapraxis">
+                <img src="./IMAGENES/mala praxis card.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Seguro de Mala Praxis</h5>
+                    <p class="card-text">Prevenir hoy, proteger siempre: Tu confianza, nuestra prioridad. Asegura tu
+                        profesión con nosotros.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 aduanas">
+                <img src="./IMAGENES/seguros aduanas logistica.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Seguro para Cargas, Maquinaria y Mercadería Transportadas</h5>
+                    <p>Protege tu empresa en cada paso del camino. Nuestros seguros especializados te resguardan contra
+                        pérdidas inesperadas. ¡Confía en nosotros para proteger tu inversión!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 autoseguro">
+                <img src="./IMAGENES/auto card.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Seguro Automotor</h5>
+                    <p>Conduce con tranquilidad en cada kilómetro. Nuestro seguro contra todo riesgo te respalda en
+                        cualquier situación. ¡Protege tu vehículo, protege tu viaje!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 accidentespersonales">
+                <img src="./IMAGENES/electrician-1080554_1280.jpg" class="card-img-top " alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Seguro de Accidentes Personales</h5>
+                    <p class="card-text">Ser autónomo tiene sus desafíos, es por eso que deseamos acompañarte en ese
+                        proceso, ofreciéndote la mejor cobertura.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 motoseguro">
+                <img src="./IMAGENES/moto card.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Seguro de Moto</h5>
+                    <p>Tu moto merece más que llaves, merece protección. Asegúrala contra robos y rueda con confianza.
+                        ¡Tu seguridad es nuestra prioridad!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inicio input para enviar datos de Contacto -->
+    <h3>Queres recibir atencion personalizada y tener una reunion por videoconferencia? Te animamos a dejarnos tu
+        contacto!</h3>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nombre y Apellido</span>
+        <input type="text" class="form-control" placeholder="ej. Candela Alfaro" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+        <input type="text" class="form-control" placeholder="ej. candealfaro18@gmail.com" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Consulta</span>
+        <input type="text" class="form-control" placeholder="Informacion, duda o consulta" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="boton consulta">
+        <button class="botonconsulta" type="submit">Enviar</button>
+    </div>
+    
+    <!-- INICIO FOOTER -->
+    <footer class="footer bg-dark text text-white text-center">
+        <div class="container">
+            <p>© 2024 Alfaroseguros. Todos los derechos reservados.</p>
+            <!-- Botones de redes sociales -->
+            <ul class="list-inline mb-0 footer-buttons">
+                <li class="list-inline-item">
+                    <button class="btn btn-primary btn-sm" onclick="window.open('https://es-la.facebook.com/', '_blank')">
+                        <i class="bi bi-facebook"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item">
+                    <button class="btn btn-dark btn-outline-light btn-sm" onclick="window.open('https://twitter.com/', '_blank')">
+                        <i class="bi bi-twitter-x"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item">
+                    <button class="btn btn-danger btn-sm" onclick="window.open('https://www.instagram.com/?hl=es', '_blank')">
+                        <i class="bi bi-instagram"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item">
+                    <button class="btn btn-success btn-sm" onclick="window.open('https://www.whatsapp.com/?lang=es_LA', '_blank')">
+                        <i class="bi bi-whatsapp"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item">
+                    <button class="btn btn-info btn-sm" onclick="window.open('https://telegram.org/', '_blank')">
+                        <i class="bi bi-telegram"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    
+    
+    
+    
+
+    <!--script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

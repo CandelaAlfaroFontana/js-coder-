@@ -4,19 +4,27 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             const { tiposSeguro, zonasSeguro, tiposCobertura } = data;
-            document.getElementById('tipo-seguro').innerHTML = generarOpciones(tiposSeguro);
-            document.getElementById('zona-seguro').innerHTML = generarOpciones(zonasSeguro);
-            document.getElementById('tipo-cobertura').innerHTML = generarOpciones(tiposCobertura);
+            llenarSelect('tipo-seguro', tiposSeguro);
+            llenarSelect('zona-seguro', zonasSeguro);
+            llenarSelect('tipo-cobertura', tiposCobertura);
         })
         .catch(error => {
             console.error('Error al cargar los datos:', error);
             Swal.fire('Error', 'No se pudieron cargar los datos', 'error');
         });
 
-    function generarOpciones(matriz) {
-        return matriz.map(item => <option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1).replace(/-/g, ' ')}</option>).join('');
+    // Función para llenar selectores con opciones
+    function llenarSelect(id, opciones) {
+        const select = document.getElementById(id);
+        opciones.forEach(opcion => {
+            const option = document.createElement('option');
+            option.value = opcion;
+            option.textContent = opcion.charAt(0).toUpperCase() + opcion.slice(1).replace(/-/g, ' ');
+            select.appendChild(option);
+        });
     }
 
+    // Evento para realizar la cotización
     document.getElementById('boton-cotizar').addEventListener('click', function() {
         const tipoSeguro = document.getElementById('tipo-seguro').value;
         const zonaSeguro = document.getElementById('zona-seguro').value;
@@ -25,11 +33,35 @@ document.addEventListener('DOMContentLoaded', function() {
         const sumaAsegurada = parseFloat(document.getElementById('monto-asegurado').value);
         const medioPago = document.getElementById('forma-pago').value;
 
+        if (validarEntradas(sumaAsegurada)) {
+            const cotizacion = calcularCotizacion(tipoSeguro, zonaSeguro, antiguedad, tipoCobertura, sumaAsegurada);
+            const datosCotizacion = {
+                tipoSeguro,
+                zonaSeguro,
+                antiguedad,
+                tipoCobertura,
+                sumaAsegurada,
+                medioPago,
+                cotizacion: cotizacion.toFixed(2)
+            };
+
+            guardarCotizacion(datosCotizacion);
+            mostrarCotizaciones();
+            Swal.fire('Cotización realizada', 'La cotización ha sido realizada con éxito.', 'success');
+        }
+    });
+
+    // Función para validar entradas
+    function validarEntradas(sumaAsegurada) {
         if (isNaN(sumaAsegurada) || sumaAsegurada < 3000000 || sumaAsegurada > 45000000) {
             Swal.fire('Error', 'Por favor, ingrese una suma asegurada válida entre 3.000.000 y 45.000.000.', 'error');
-            return;
+            return false;
         }
+        return true;
+    }
 
+    // Función para calcular la cotización
+    function calcularCotizacion(tipoSeguro, zonaSeguro, antiguedad, tipoCobertura, sumaAsegurada) {
         const costoBase = 25000;
         const multiplicadoresTipoSeguro = {
             'vehiculo': 1.2,
@@ -74,16 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const multiplicadorCobertura = multiplicadoresCobertura[tipoCobertura] || 1;
         const multiplicadorZona = multiplicadoresZona[zonaSeguro] || 1;
 
-        const cotizacion = costoBase * multiplicadorTipoSeguro * multiplicadorZona * multiplicadorCobertura * (sumaAsegurada / 10000000);
-        const datosCotizacion = {
-            tipoSeguro,
-            zonaSeguro,
-            antiguedad,
-            tipoCobertura,
-            sumaAsegurada,
-            medioPago,
-            cotizacion: cotizacion.toFixed(2)
-        };
+        return costoBase * multiplicadorTipoSeguro * multiplicadorZona * multiplicadorCobertura * (sumaAsegurada / 10000000);
+    }
 
         guardarCotizacion(datosCotizacion);
         mostrarCotizaciones();
@@ -118,4 +142,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     mostrarCotizaciones();
-});
